@@ -7,7 +7,7 @@ proxy_env: {}  # yamllint disable rule:braces
 # ---------------------------------------------------------------------
 
 # Cluster variables
-cluster_vip: ""  # IP address for client access to the databases in the cluster (optional).
+cluster_vip: "192.168.100.90"  # IP address for client access to the databases in the cluster (optional).
 vip_interface: "{{ ansible_default_ipv4.interface }}"  # interface name (e.g., "ens32").
 # Note: VIP-based solutions such as keepalived or vip-manager may not function correctly in cloud environments like AWS.
 
@@ -15,9 +15,9 @@ patroni_cluster_name: "postgres-cluster"  # the cluster name (must be unique for
 patroni_install_version: "3.2.2"  # or 'latest'
 
 patroni_superuser_username: "postgres"
-patroni_superuser_password: "postgres-pass"  # please change password
+patroni_superuser_password: "Copy_Clench_Galley9"  # please change password
 patroni_replication_username: "replicator"
-patroni_replication_password: "replicator-pass"  # please change password
+patroni_replication_password: "Average8_Brethren_Pliable"  # please change password
 
 synchronous_mode: false  # or 'true' for enable synchronous database replication
 synchronous_mode_strict: false  # if 'true' then block all client writes to the master, when a synchronous replica is not available
@@ -156,16 +156,42 @@ postgresql_password_encryption_algorithm: "scram-sha-256"  # or "md5" if your cl
 postgresql_users:
   - { name: "{{ pgbouncer_auth_username }}", password: "{{ pgbouncer_auth_password }}", flags: "LOGIN", role: "" }
 #  - { name: "monitoring_auth_username", password: "monitoring_user_password", flags: "LOGIN", role: "pg_monitor" } # monitoring Service Account
-#  - { name: "mydb-user", password: "mydb-user-pass", flags: "SUPERUSER" }
+  - { name: "saltcorn", password: "Publisher_Ebook7_Vanish", flags: "SUPERUSER" }
+  - { name: "saltcorndev", password: "Grimacing_Unloved_Bungee2", flags: "SUPERUSER" }
+  - { name: "proxycares", password: "Linguini6_Scabby_Ebony", flags: "SUPERUSER" }
+  - { name: "proxycaresdev", password: "Subgroup_Manila7_Empirical", flags: "SUPERUSER" }
+  - { name: "n8n", password: "Ravage_Large_Ranting8", flags: "SUPERUSER" }
+  - { name: "matchcares-paperless", password: "Manger_Blasphemy_Trial5", flags: "SUPERUSER" }
+# - { name: "matchcares-fief", password: "Defensive6_Enhance_Powdery", flags: "SUPERUSER" }
+  - { name: "matchcares-dev-authentik", password: "Defensive6_Enhance_Powdery", flags: "SUPERUSER" }
+  - { name: "matchcares-dev", password: "Subgroup_Manila7_Empirical", flags: "SUPERUSER" }
+  - { name: "matchcares-dev-n8n", password: "Eel6_Joining_Hanky", flags: "SUPERUSER" }
+  - { name: "matchcares-portal-dev", password: "Valley7_Galvanize_Washed", flags: "SUPERUSER" }
+  - { name: "matchcaresdev", password: "Valley7_Galvanize_Washed", flags: "SUPERUSER" }
+  - { name: "matchcares-portal-prod", password: "Suds6_Splashy_Dislodge", flags: "SUPERUSER" }
+  - { name: "fusionpbx", password: "Falsify_Traps2_Wildland", flags: "SUPERUSER" }
 #  - { name: "", password: "", flags: "NOSUPERUSER" }
 #  - { name: "", password: "", flags: "NOSUPERUSER" }
 #  - { name: "", password: "", flags: "NOLOGIN" }
 
 # (optional) list of databases to be created (if not already exists)
-postgresql_databases: []
+postgresql_databases:  
 #  - { db: "mydatabase", encoding: "UTF8", lc_collate: "ru_RU.UTF-8", lc_ctype: "ru_RU.UTF-8", owner: "mydb-user" }
-#  - { db: "mydatabase2", encoding: "UTF8", lc_collate: "ru_RU.UTF-8", lc_ctype: "ru_RU.UTF-8", owner: "mydb-user", conn_limit: "50" }
-#  - { db: "", encoding: "UTF8", lc_collate: "en_US.UTF-8", lc_ctype: "en_US.UTF-8", owner: "" }
+#  - { db: "saltcorn", encoding: "UTF8", lc_collate: "ru_RU.UTF-8", lc_ctype: "ru_RU.UTF-8", owner: "mydb-user", conn_limit: "50" }
+  - { db: "saltcorn", encoding: "UTF8", lc_collate: "en_US.UTF-8", lc_ctype: "en_US.UTF-8", owner: "saltcorn" }
+  - { db: "saltcorndev", encoding: "UTF8", lc_collate: "en_US.UTF-8", lc_ctype: "en_US.UTF-8", owner: "saltcorndev" }
+  - { db: "n8n", encoding: "UTF8", lc_collate: "en_US.UTF-8", lc_ctype: "en_US.UTF-8", owner: "n8n" }
+# - { db: "matchcares-paperless", encoding: "UTF8", lc_collate: "en_US.UTF-8", lc_ctype: "en_US.UTF-8", owner: "matchcares-paperless" }
+  - { db: "paperless", encoding: "UTF8", lc_collate: "en_US.UTF-8", lc_ctype: "en_US.UTF-8", owner: "matchcares-paperless" }
+# - { db: "matchcares-fief", encoding: "UTF8", lc_collate: "en_US.UTF-8", lc_ctype: "en_US.UTF-8", owner: "matchcares-paperless" }
+  - { db: "matchcares-dev-authentik", encoding: "UTF8", lc_collate: "en_US.UTF-8", lc_ctype: "en_US.UTF-8", owner: "matchcares-dev-authentik" }
+  - { db: "matchcares-dev", encoding: "UTF8", lc_collate: "en_US.UTF-8", lc_ctype: "en_US.UTF-8", owner: "matchcares-dev" }
+  - { db: "matchcares-dev-n8n", encoding: "UTF8", lc_collate: "en_US.UTF-8", lc_ctype: "en_US.UTF-8", owner: "matchcares-dev-n8n" }
+  - { db: "matchcares-portal-dev", encoding: "UTF8", lc_collate: "en_US.UTF-8", lc_ctype: "en_US.UTF-8", owner: "matchcares-portal-dev" }
+  - { db: "matchcaresdev", encoding: "UTF8", lc_collate: "en_US.UTF-8", lc_ctype: "en_US.UTF-8", owner: "matchcaresdev" }
+  - { db: "matchcares-portal-prod", encoding: "UTF8", lc_collate: "en_US.UTF-8", lc_ctype: "en_US.UTF-8", owner: "matchcares-portal-prod" }
+  - { db: "fusionpbx", encoding: "UTF8", lc_collate: "en_US.UTF-8", lc_ctype: "en_US.UTF-8", owner: "fusionpbx" }
+                       
 #  - { db: "", encoding: "UTF8", lc_collate: "en_US.UTF-8", lc_ctype: "en_US.UTF-8", owner: "" }
 
 # (optional) list of schemas to be created (if not already exists)
